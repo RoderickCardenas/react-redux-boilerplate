@@ -7,16 +7,7 @@ import * as serviceWorker from './serviceWorker'
 // importing redux
 import { createStore, combineReducers, compose } from 'redux'
 import { Provider } from 'react-redux'
-
-// reducer to get pokemon
-const getPokemon = (state = [], action) => {
-  switch (action.type) {
-    case 'GET_POKEMON':
-      return action.payload
-    default:
-      return state
-  }
-}
+import getPokemon from './reducers/getPokemon'
 
 // creating a store with devtools extension
 const store = createStore(
