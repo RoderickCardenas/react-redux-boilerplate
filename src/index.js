@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker'
 
 // importing redux
 import { createStore, combineReducers, compose } from 'redux'
+import { Provider } from 'react-redux'
 
 // reducer to get pokemon
 const getPokemon = (state = [], action) => {
@@ -25,8 +26,13 @@ const store = createStore(
   )
 )
 
-// passing store to app
-ReactDOM.render(<App store={store} />, document.getElementById('root'))
+// passing store to Provider who passes it into app so any nested components can access the store via connect()
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
